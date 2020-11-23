@@ -28,6 +28,8 @@ namespace Superheroes
             listaSuperheroes.Add((Superheroe)this.Resources["nuevo"]);
             MessageBox.Show("Superhéroe insertado con exito", "Superhéroes", MessageBoxButton.OK, MessageBoxImage.Information);
             totalTextBlock.Text = listaSuperheroes.Count.ToString();
+
+            ReiniciarSuperHeroe();
         }
 
         private void leftImage_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
@@ -54,11 +56,13 @@ namespace Superheroes
 
         private void limpiarButton_Click(object sender, RoutedEventArgs e)
         {
-            nombreTextBox.Clear();
-            imagenTextBox.Clear();
-            vengadoresCheckBox.IsChecked = false;
-            xMenCheckBox.IsChecked = false;
-            heroeRadioButton.IsChecked = true;
+            ReiniciarSuperHeroe();
+        }
+
+        private void ReiniciarSuperHeroe()
+        {
+            this.Resources.Remove("nuevo");
+            this.Resources.Add("nuevo", new Superheroe() { Heroe = true });
         }
     }
 }
