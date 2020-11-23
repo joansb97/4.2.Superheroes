@@ -55,7 +55,7 @@ namespace Superheroes
                 if (_xmen != value)
                 {
                     _xmen = value;
-                    NotifyPropertyChanged("Vengador");
+                    NotifyPropertyChanged("Xmen");
                 }
             }
         }
@@ -84,6 +84,11 @@ namespace Superheroes
                 {
                     _villano = value;
                     NotifyPropertyChanged("Villano");
+                }
+                if (_villano)
+                {
+                    Vengador = false;
+                    Xmen = false;
                 }
             }
         }
