@@ -11,11 +11,15 @@ namespace Superheroes
     /// </summary>
     public partial class MainWindow : Window
     {
-        private List<Superheroe> listaSuperheroes;
+        MainWindowVM _vm;
 
         public MainWindow()
         {
+            _vm = new MainWindowVM();
             InitializeComponent();
+            DataContext = _vm;
+
+            
 
             listaSuperheroes = Superheroe.GetSamples();
             superheroeDockPanel.DataContext = listaSuperheroes.FirstOrDefault();
@@ -34,6 +38,7 @@ namespace Superheroes
 
         private void leftImage_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
+            /*
             int actual = Int32.Parse(actualTextBlock.Text);
 
             if (actual > 1)
@@ -41,10 +46,13 @@ namespace Superheroes
                 superheroeDockPanel.DataContext = listaSuperheroes[actual - 2];
                 actualTextBlock.Text = (actual - 1).ToString();
             }
+            */
+            _vm.HeroeAnterior();
         }
 
         private void rightImage_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
+            /*
             int actual = Int32.Parse(actualTextBlock.Text);
 
             if (actual < listaSuperheroes.Count)
@@ -52,17 +60,21 @@ namespace Superheroes
                 superheroeDockPanel.DataContext = listaSuperheroes[actual];
                 actualTextBlock.Text = (actual + 1).ToString();
             }
+            */
+            _vm.HeroeSiguiente();
         }
 
         private void limpiarButton_Click(object sender, RoutedEventArgs e)
         {
-            ReiniciarSuperHeroe();
+            // ReiniciarSuperHeroe();
+            _vm.ReiniciarSuperHeroe();
         }
-
+        /*
         private void ReiniciarSuperHeroe()
         {
+
             this.Resources.Remove("nuevo");
             this.Resources.Add("nuevo", new Superheroe() { Heroe = true });
-        }
+        }*/
     }
 }
